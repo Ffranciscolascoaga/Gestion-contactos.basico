@@ -1,0 +1,69 @@
+# voy a definir una funcion para poder cargar nombres y numeros de contactos 
+datos = {}
+
+def contactos(diccionario):
+    nombre = input("Ingrese su nombre: ")
+    numero = input("Ingrese su numero: ")
+    diccionario[nombre] = numero
+    print("El contacto se ha cargado con exito.")
+    
+contactos(datos) #Cargo de datos
+
+
+# Con esta fucnion defino lista de contactos con los cuales puedo visualizar los contactos agendados
+
+def lista_contactos(diccionario):
+    print("Lista de contactos:")
+    for nombre, numero in diccionario.items():
+        print(f"{nombre}-{numero}")
+
+lista_contactos(datos)
+
+# Aca defino una variable para modificar un contacto existente.
+
+def modificar_contacto(diccionario):
+    nombre = input("Ingrese el nombre que desea modificar: ")
+
+    if nombre in diccionario:
+        nuevo_numero = input("Ingrese su nuevo numero: ")
+        diccionario[nombre] = nuevo_numero
+        print("El contacto se ha modificado con exito.")
+    else:
+        print("El contacto no existe.")
+
+modificar_contacto(datos)
+
+# aca defino una variable para eliminar un contacto existente
+
+def eliminar_contacto(diccionario):
+    nombre = input("Ingrese el nombre que desea eliminar: ")
+
+    if nombre in diccionario:
+        del diccionario[nombre]
+        print("El contacto ha sido eliminado con exito.")
+    else:
+        print("No existe ningun contacto con ese nombre.")
+
+
+# Creo un menu donde el usuario puede hacer uso de lo que desea hacer. 
+
+while True:
+    print("Que desea hacer: ")
+    print("1. Agregar un contacto")
+    print("2. Actualizar un contacto")
+    print("3. Eliminar un contacto")
+    print("4. Salir")
+
+    opcion = input("Ingrese su opcion: ")
+
+    if opcion == "1":
+        contactos(datos)
+    elif opcion == "2":
+        modificar_contacto(datos)
+    elif opcion == "3":
+        eliminar_contacto(datos)
+    elif opcion == "4":
+        print("Fin del programa") 
+        break 
+    else:
+        print("Opcion no valida")  
